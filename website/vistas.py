@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template
-from .modelo import regresion, usuario, pd
+from .graficas import regresion, usuario, pd
 
 vistas = Blueprint('vistas', __name__)
 

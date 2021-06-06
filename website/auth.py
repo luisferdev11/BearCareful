@@ -23,6 +23,7 @@ def VerificarUsu(correo, contra):
     query = "select id_usu from MUsuario where cor_usu = %s AND con_usu = %s"
     #valores = (email, contra)
     #cursor.execute(query, valores)
+
     """
     try:
         email = correo
