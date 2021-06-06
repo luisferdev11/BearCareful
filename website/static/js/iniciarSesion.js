@@ -22,7 +22,7 @@ function validacionCaracteresEspeciales(input){
 }
 
 function validacionTamaño(input1, input2){
-    if(input1.length < 8 | input2.length < 8){
+    if(input1.length < 8 | input2.length < 3){
         alert("Debes usar minimo 8 caracteres.");
         return false;
     }

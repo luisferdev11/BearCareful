@@ -1,4 +1,5 @@
 from flask import Blueprint, render_template, request, url_for, redirect
+import numpy as np
 from . import mysql
 
 auth = Blueprint('auth', __name__)
@@ -11,25 +12,24 @@ def login():
     if request.method == "POST":
         email = request.form.get('correo')
         password = request.form.get('contra')
-
-        cursor = mysql.connection.cursor()
-        query = "select id_usu from MUsuario where cor_usu = %s AND con_usu = %s"
-        valores = (email, password)
-        id_usu = cursor.execute(query, valores)
-        cursor.close()
-        return redirect(url_for('vistas.historico', id_usu=id_usu)) #Usar aqui el id obtenido
+        print(email)
+        try:
+            cursor = mysql.connection.cursor()
+            query = "select id_usu from MUsuario where cor_usu = %s AND con_usu = %s"
+            valores = (email, password)
+            print(valores)
+            cursor.execute(query, valores)
+            id = np.array(cursor.fetchall())
+            id_usu = (id[0][0])
+            cursor.close()
+            return redirect(url_for('vistas.historico', id_usu=id_usu)) #Usar aqui el id obtenido
+        except:
+            return render_template("iniciarSesion.html")
     else:
         return render_template("iniciarSesion.html")
 
 
 
-def VerificarUsu(correo, contra):
-
-    cursor = mysql.connection.cursor()
-    query = "select id_usu from MUsuario where cor_usu = %s AND con_usu = %s"
-    valores = (correo, contra)
-    id_usuario = cursor.execute(query, valores)
-    return id_usuario
 
 
 

@@ -25,10 +25,10 @@
     </div>
     <div class="derecha">
         <div class="navegacionDerecha">
-            <a class= "boton-secundario" href="predicciones.html">Estadísticas</a>
+            <a class= "boton-secundario" href="{{ url_for('vistas.paises') }}">Estadísticas</a>
         </div>
         <div class="navegacionDerecha">
-            <a class= "boton-secundario" href="paises.html">Histórico</a>
+            <a class= "boton-secundario" href="{{ url_for('auth.login') }}">Histórico</a>
         </div>
         <div class="navegacionDerecha">
             <a class= "boton-secundario" href="paises.html">Iniciar Sesión</a>
@@ -64,9 +64,9 @@
     <br>
     <a href="paises.html" class="a-nav">Iniciar Sesion</a>
     <br>
-    <a href="paises.html" class="a-nav">Histórico</a>
+    <a href="{{ url_for('auth.login') }}" class="a-nav">Histórico</a>
     <br>
-    <a href="predicciones.html" class="a-nav" >Estadísticas</a>
+    <a href="{{ url_for('vistas.paises') }}" class="a-nav" >Estadísticas</a>
     <br>
 </div>
 <!-- Aqui termina barra de navegacion -->

@@ -42,20 +42,20 @@ def usuario(id):
     myresult = cursor.fetchall()
     cursor.close()
 
-    print(myresult)
+    #print(myresult)
 
     for row in myresult:
         fecha.append(row[0])
         data.append(int(row[1]))
 
     fechaDf = pd.to_datetime(fecha)
-    print(fechaDf)
+    #print(fechaDf)
     fechaDf = fechaDf.map(dt.datetime.toordinal)
     X = np.array(fechaDf)
     if len(X) >= 8:
         y = np.array(DataFrame(data, columns=['puntuacion']))
-        print(X)
-        print(y)
+        #print(X)
+        #print(y)
 
         X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.5, random_state=42)
         X_train = X_train.reshape([X_train.shape[0], 1])
@@ -69,22 +69,22 @@ def usuario(id):
         #Convertir el eje X en datos fecha de nuevo
         fechaDf = fechaDf.map(dt.datetime.fromordinal)
         X = np.array(fechaDf)
-        print(fechaDf)
-        print(X)
+        #print(fechaDf)
+        #print(X)
 
         #Convertir el eje x de predicciones en Datetime
         X_test = X_test.ravel()
-        print(dt.datetime.fromordinal(X_test[3]))
+        #print(dt.datetime.fromordinal(X_test[3]))
 
         lenX_test = len(X_test)
-        print(lenX_test)
+        #print(lenX_test)
         i=0
         X_test = X_test.astype('S')
         while i < lenX_test:
             X_test[i] = dt.datetime.fromordinal(int(X_test[i]))
             i +=1
         X_test = X_test.astype('datetime64')
-        print(X_test)
+        #print(X_test)
 
         fig = plt.figure(figsize=(8, 5.5))
         plt.title('Historico test')
