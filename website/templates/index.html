@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/static/shortcut-icon.png">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/masterstyle.css') }}">
+    <script src="/static/js/iniciarSesion.js"></script>
+    <title>Bear Careful</title>
+</head>
+<body>
+<nav class="normal">
+    <div class="izquierda">
+        <div class="navegacionIzquierda">
+            <a href="index.html">
+                <h1>Bear Careful</h1>
+            </a>
+        </div>
+        <div class="navegacionIzquierda">
+            <a href="index.html">
+                <img src="/static/icon.png" width="100rem" height="100rem">
+            </a>
+        </div>
+    </div>
+    <div class="derecha">
+        <div class="navegacionDerecha">
+            <a class= "boton-secundario" href="predicciones.html">Estadísticas</a>
+        </div>
+        <div class="navegacionDerecha">
+            <a class= "boton-secundario" href="paises.html">Histórico</a>
+        </div>
+        <div class="navegacionDerecha">
+            <a class= "boton-secundario" href="paises.html">Iniciar Sesión</a>
+        </div>
+        <div class="navegacionDerecha">
+            <a class= "boton-principal" href="paises.html">Realizar Test</a>
+        </div>
+    </div>
+</nav>
+<nav class="responsive">
+    <div class="izquierda">
+        <div class="navegacionIzquierda">
+            <a href="index.html">
+                <h1>&nbspBear Careful</h1>
+            </a>
+        </div>
+        <div class="navegacionIzquierda">
+            <a href="index.html">
+                <img src="/static/icon.png" width="100rem" height="100rem">
+            </a>
+        </div>
+    </div>
+    <div class="derecha">
+        <label for="menu">
+            <img src="/static/menu.svg" height="101rem">
+        </label>
+    </div>
+</nav>
+<input id="menu" type="checkbox">
+<div class="desplegable">
+    <br>
+    <a href="paises.html" class="a-nav">Realizar Test</a>
+    <br>
+    <a href="paises.html" class="a-nav">Iniciar Sesion</a>
+    <br>
+    <a href="paises.html" class="a-nav">Histórico</a>
+    <br>
+    <a href="predicciones.html" class="a-nav" >Estadísticas</a>
+    <br>
+</div>
+<!-- Aqui termina barra de navegacion -->
+    <div class="contenido">
+    {% block content %}
+    {% endblock %}
+    </div>
+</body>
+<footer>
+    <p><a href="index.html">Bear Tual</a></p>
+    <p></p><a href="Equipo.html">Equipo</a></p>
+    <p>Derechos reservados</p>
+</footer>
+</html>

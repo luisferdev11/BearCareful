@@ -1,0 +1,33 @@
+{% extends "index.html" %}
+
+{% block content %}
+<div class="formulario">
+    <div class="cuentaIzquierda">
+        <div class="cuenta">
+            <h3>Identificate por favor</h3>
+
+            <form name="incioSesion" action="/login" method="post">
+                Correo electrónico:
+                <br><br>
+                <input id="inputCorreo" type="email" name="correo" placeholder="Correo">
+                <br><br>
+                Contraseña:
+                <br><br>
+                <input id="inputContraseña" type="password" name="contra" placeholder="Contraseña">
+                <br><br>
+                <input onclick="validar(event)" type="submit" class="boton" value="Identificarse">
+                <br><br>
+            </form>
+
+        </div>
+        <br>
+        <p class="contenido">¿No tienes una cuenta? <a href="registro.html">Registrate</a></p>
+    </div>
+    <br>
+    <div class="cuentaDerecha">
+        <div class="contenido">
+            <img src="/static/icon.png" width="300rem">
+        </div>
+    </div>
+</div>
+{% endblock %}
