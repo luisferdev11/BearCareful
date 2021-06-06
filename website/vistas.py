@@ -3,13 +3,11 @@ from .graficas import regresion, usuario, pd
 
 vistas = Blueprint('vistas', __name__)
 
-@vistas.route('/')
-def home():
-    return render_template("iniciarSesion.html")
 
-@vistas.route('/historico')
-def historico():
-    return render_template("historico.html", historico=usuario(1))
+@vistas.route('/historico/<id_usu>')
+def historico(id_usu):
+
+    return render_template("historico.html", historico=usuario(id=id_usu))
 
 @vistas.route('/paises')
 def paises():

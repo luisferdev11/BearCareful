@@ -6,7 +6,7 @@ mysql = MySQL()
 
 def create_app():
     app = Flask(__name__)
-    app.secret_key = "CallateAlvAlexis"
+    app.secret_key = "ChASuMdrMiglyMrin"
 
     db = yaml.load(open('db.yaml'))
     app.config['MYSQL_HOST'] = db['mysql_host']

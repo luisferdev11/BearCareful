@@ -1,44 +1,36 @@
-from flask import Blueprint, render_template, request
-
+from flask import Blueprint, render_template, request, url_for, redirect
+from . import mysql
 
 auth = Blueprint('auth', __name__)
 
-@auth.route('/login', methods=["GET","POST"])
+
+
+@auth.route('/', methods=["GET","POST"])
 def login():
+    #global id
     if request.method == "POST":
         email = request.form.get('correo')
         password = request.form.get('contra')
-        print(email)
-        print(password)
-    return "<p>Inicio de Sesion</p>"
 
-@auth.route('/logout')
-def logout():
-    return "<p>Inicio de Sesion</p>"
+        cursor = mysql.connection.cursor()
+        query = "select id_usu from MUsuario where cor_usu = %s AND con_usu = %s"
+        valores = (email, password)
+        id_usu = cursor.execute(query, valores)
+        cursor.close()
+        return redirect(url_for('vistas.historico', id_usu=id_usu)) #Usar aqui el id obtenido
+    else:
+        return render_template("iniciarSesion.html")
+
 
 
 def VerificarUsu(correo, contra):
 
-    #Conectar con BD
+    cursor = mysql.connection.cursor()
     query = "select id_usu from MUsuario where cor_usu = %s AND con_usu = %s"
-    #valores = (email, contra)
-    #cursor.execute(query, valores)
+    valores = (correo, contra)
+    id_usuario = cursor.execute(query, valores)
+    return id_usuario
 
-    """
-    try:
-        email = correo
-        contra = contra
-        query = "select id_usu from MUsuario where cor_usu = %s AND con_usu = %s"
-        valores = (email, contra)
-        cursor.execute(query, valores)
-        data = cursor.fetchall()
-    except mysql.connector.Error as err:
-        if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
-            print("Error con el usuario o password")
-        elif err.errno == errorcode.ER_BAD_DB_ERROR:
-            print("La base de datos no existe")
-        else:
-            print(err)
-    finally:
-        return data
-"""
+
+
+
