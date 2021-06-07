@@ -1,5 +1,5 @@
-mysql_host: 'localhost'
-mysql_user: 'root'
-mysql_password: 'elchinodragonball'
-mysql_db: 'bearcareful'
-mysql_port: 3307
+mysql_host: 'us-cdbr-east-04.cleardb.com'
+mysql_user: 'bf70951ef7674e'
+mysql_password: '84d24c645799204'
+mysql_db: 'heroku_7ef57fbe0b3aa47'
+mysql_port: 3306
